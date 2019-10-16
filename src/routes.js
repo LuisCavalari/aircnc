@@ -6,11 +6,15 @@ const SessionController = require('./app/controller/SessionController')
 const SpotController = require('./app/controller/SpotController')
 const DashBoardController = require('./app/controller/DashboardController')
 const BookingController = require('./app/controller/BookingController')
+const AproveController = require('./app/controller/AproveController')
+const RefuseController = require('./app/controller/RefuseController')
 
 router.post('/session', SessionController.store)
 router.get('/spot/', SpotController.index)
 router.get('/dashboard', DashBoardController.show)
 router.post('/spot', upload.single('thumbnail') ,SpotController.store)
 router.post('/spot/:spot_id/booking', BookingController.store)
+router.post('/booking/:bookingId/approve', AproveController.store)
+router.post('/booking/:bookingId/refuse', RefuseController.store)
 
 module.exports = router
